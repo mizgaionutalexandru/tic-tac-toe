@@ -23,16 +23,7 @@
 }
 
 .playing p {
-  position: relative;
   color: var(--blue);
-}
-
-.playing p::after {
-  content: '';
-  position: absolute;
-  width: 110%;
-  height: 1px;
-  background-color: var(--blue);
-  bottom: -2px;
-  left: -5%;
+  border: 1px solid var(--blue);
+  padding: 0.1em 0.5em;
 }
