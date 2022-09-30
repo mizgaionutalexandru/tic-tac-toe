@@ -2,11 +2,12 @@ import React from 'react';
 import './PlayerSides.css';
 import PlayerSide from './PlayerSide.js';
 
-function PlayerSides() {
+function PlayerSides({ players }) {
   return (
     <div className="flex col-even bg-full">
-      <PlayerSide />
-      <PlayerSide />
+      {players.map((player) => (
+        <PlayerSide player={player} key={player.name} />
+      ))}
     </div>
   );
 }

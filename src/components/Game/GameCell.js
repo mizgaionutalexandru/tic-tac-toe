@@ -3,10 +3,19 @@ import './GameCell.css';
 import x from './x.svg';
 import zero from './zero.svg';
 
-function GameCell() {
+function GameCell({ cellSymbol, id, onCellClick }) {
+  const cellClickHandler = () => {
+    onCellClick(id);
+  };
+
+  if (cellSymbol === '')
+    return <div className="game-cell" onClick={cellClickHandler}></div>;
+
+  const src = cellSymbol === '0' ? zero : x;
+
   return (
     <div className="game-cell">
-      <img src={zero} alt="x" />
+      <img src={src} alt="" />
     </div>
   );
 }
