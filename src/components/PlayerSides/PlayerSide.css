@@ -1,0 +1,38 @@
+.player-side {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  height: 100%;
+  color: var(--white);
+  text-align: center;
+  padding-top: 1rem;
+}
+
+.player-side h1 {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 1.6rem;
+}
+
+.player-side div {
+  font-family: 'Metrophobic', sans-serif;
+  font-size: 1rem;
+}
+
+.player-side p {
+  display: inline-block;
+}
+
+.playing p {
+  position: relative;
+  color: var(--blue);
+}
+
+.playing p::after {
+  content: '';
+  position: absolute;
+  width: 110%;
+  height: 1px;
+  background-color: var(--blue);
+  bottom: -2px;
+  left: -5%;
+}

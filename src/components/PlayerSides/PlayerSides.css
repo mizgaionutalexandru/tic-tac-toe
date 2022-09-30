@@ -1,0 +1,12 @@
+.flex {
+  display: flex;
+}
+
+.col-even > * {
+  width: 100%;
+}
+
+.bg-full {
+  width: 100%;
+  height: 100%;
+}

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Metrophobic&family=Permanent+Marker&display=swap');
+
 html {
   --bg: #1a2b34;
   --grey: #334651;
@@ -5,6 +7,7 @@ html {
   --yellow: #f7ba3e;
   --red: #ea5e5e;
   --purple: #bf85bf;
+  --white: #f9f9ec;
 }
 
 * {
