@@ -5,11 +5,12 @@ import Game from './components/Game/Game';
 
 function App() {
   // By default the Player 1 starts
-  // prettier-ignore
-  const [players, setPlayers] = useState([
-    {name: 1, score: 0, status: 'playing', symbol:'x'},
-    {name: 2, score: 0, status: 'waiting', symbol:'0'},
-  ]);
+  const defaultPlayers = [
+    { name: 1, score: 0, status: 'playing', symbol: 'x' },
+    { name: 2, score: 0, status: 'waiting', symbol: '0' },
+  ];
+
+  const [players, setPlayers] = useState(defaultPlayers);
 
   const playerChangeHandler = () => {
     setPlayers((prevPlayers) =>
@@ -22,10 +23,18 @@ function App() {
     );
   };
 
+  const gameResetHandler = () => {
+    setPlayers(defaultPlayers);
+  };
+
   return (
     <div className="bg bg-big">
       <PlayerSides players={players} />
-      <Game players={players} onPlayerChange={playerChangeHandler} />
+      <Game
+        players={players}
+        onPlayerChange={playerChangeHandler}
+        onGameReset={gameResetHandler}
+      />
     </div>
   );
 }

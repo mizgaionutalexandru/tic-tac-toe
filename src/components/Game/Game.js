@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import './Game.css';
 import GameBoard from './GameBoard';
 
-function Game({ players, onPlayerChange }) {
+function Game({ players, onPlayerChange, onGameReset }) {
+  const defaultBoard = ['', '', '', '', '', '', '', '', ''];
   // prettier-ignore
-  const [boardSymbols, setBoardSymbols] = useState(['', '', '', '', '', '', '', '', '']);
+  const [boardSymbols, setBoardSymbols] = useState(defaultBoard);
   /* Equivalent to the displayed GameBoard
     0 1 2
     3 4 5
@@ -30,13 +31,22 @@ function Game({ players, onPlayerChange }) {
     });
   };
 
+  const gameResetHandler = () => {
+    // Reset the board
+    setBoardSymbols(defaultBoard);
+    // Reset the players state
+    onGameReset();
+  };
+
   return (
     <div className="game">
       <GameBoard
         boardSymbols={boardSymbols}
         onGameBoardAction={gameBoardActionHandler}
       />
-      <button className="bg">Reset</button>
+      <button className="bg" onClick={gameResetHandler}>
+        Reset
+      </button>
     </div>
   );
 }
