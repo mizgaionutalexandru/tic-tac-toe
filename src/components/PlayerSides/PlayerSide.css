@@ -8,9 +8,21 @@
   padding-top: 1rem;
 }
 
+.player-side header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+
 .player-side h1 {
   font-family: 'Permanent Marker', cursive;
   font-size: 1.6rem;
+}
+
+.player-side img {
+  height: 1.5rem;
+  width: 1.5rem;
 }
 
 .player-side div {
@@ -22,9 +34,9 @@
   display: inline-block;
 }
 
-.playing p {
-  color: var(--blue);
-  border: 1px solid var(--blue);
+.playing .status p {
+  color: var(--color);
+  border: 1px solid var(--color);
   padding: 0.1em 0.5em;
 }
 

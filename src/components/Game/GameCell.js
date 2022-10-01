@@ -1,7 +1,7 @@
 import React from 'react';
 import './GameCell.css';
-import x from './x.svg';
-import zero from './zero.svg';
+import x from '../../icons/x.svg';
+import zero from '../../icons/zero.svg';
 
 function GameCell({ cellSymbol, id, onCellClick }) {
   const cellClickHandler = () => {
