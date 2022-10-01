@@ -24,6 +24,7 @@ function App() {
   };
 
   const gameResetHandler = () => {
+    // Reset the players
     setPlayers(defaultPlayers);
   };
 
