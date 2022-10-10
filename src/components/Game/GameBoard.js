@@ -2,9 +2,9 @@ import React from 'react';
 import './GameBoard.css';
 import GameCell from './GameCell';
 
-function GameBoard({ boardSymbols, onGameBoardAction }) {
+function GameBoard({ boardSymbols, onGameBoardClick }) {
   const cellClickHandler = (index) => {
-    onGameBoardAction(index);
+    onGameBoardClick(index);
   };
 
   return (
