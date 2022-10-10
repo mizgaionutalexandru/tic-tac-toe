@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
+import Notification from './components/Notification/Notification';
 import PlayerSides from './components/PlayerSides/PlayerSides';
 import Game from './components/Game/Game';
 
@@ -98,8 +99,20 @@ function App() {
     setPlayers(defaultPlayers);
   };
 
+  const playAgainHandler = () => {
+    // Reset the board
+    setBoardSymbols(defaultBoard);
+    // Reset the game status
+    setIsGameGoing(true);
+  };
+
   return (
     <div className="bg bg-big">
+      <Notification
+        isGameGoing={isGameGoing}
+        players={players}
+        onPlayAgain={playAgainHandler}
+      />
       <PlayerSides players={players} />
       <Game
         boardSymbols={boardSymbols}
