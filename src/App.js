@@ -13,8 +13,8 @@ function App() {
   ];
 
   const [players, setPlayers] = useState(defaultPlayers);
-  // True if the players are playing or false if the game pauses (when a round is won)
-  const [isGameGoing, setIsGameGoing] = useState(true);
+  // The notification will only appear if a round has ended (won/tied)
+  const [notification, setNotification] = useState(null);
   // prettier-ignore
   const [boardSymbols, setBoardSymbols] = useState(defaultBoard);
   /* Equivalent to the displayed GameBoard
@@ -50,7 +50,7 @@ function App() {
 
   const gameBoardClickHandler = (index) => {
     // If the game is paused, do not consider the action
-    if (!isGameGoing) return;
+    if (notification) return;
 
     // Set the new boardSymbols state
     setBoardSymbols((prevBoardSymbols) => {
@@ -62,7 +62,7 @@ function App() {
 
       // Check if the player has won pause the game
       if (hasPlayerWon(index, newSymbols)) {
-        setIsGameGoing(false);
+        setNotification(`Player ${playingPlayer.name} won!`);
         // Set the score
         setPlayers((prevPlayers) =>
           prevPlayers.map((player) => {
@@ -73,6 +73,12 @@ function App() {
             };
           })
         );
+        return newSymbols;
+      }
+
+      // Check if there is a tie
+      if (newSymbols.filter((symbol) => symbol === '').length === 0) {
+        setNotification('Round tied!');
         return newSymbols;
       }
 
@@ -93,8 +99,8 @@ function App() {
   const gameResetHandler = () => {
     // Reset the board
     setBoardSymbols(defaultBoard);
-    // Reset the game status
-    setIsGameGoing(true);
+    // Reset the game status; notification null means the game is going
+    setNotification(null);
     // Reset the players state
     setPlayers(defaultPlayers);
   };
@@ -102,17 +108,13 @@ function App() {
   const playAgainHandler = () => {
     // Reset the board
     setBoardSymbols(defaultBoard);
-    // Reset the game status
-    setIsGameGoing(true);
+    // Reset the game status; notification null means the game is going
+    setNotification(null);
   };
 
   return (
     <div className="bg bg-big">
-      <Notification
-        isGameGoing={isGameGoing}
-        players={players}
-        onPlayAgain={playAgainHandler}
-      />
+      <Notification title={notification} onPlayAgain={playAgainHandler} />
       <PlayerSides players={players} />
       <Game
         boardSymbols={boardSymbols}
